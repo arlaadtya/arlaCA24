@@ -1,4 +1,4 @@
-<IFmodule mode_rewrite.c>
+<IFmodule mod_rewrite.c>
 
 RewriteEngine on
 #RewriteBase /
