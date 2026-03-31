@@ -28,3 +28,5 @@
 <hr class="sidebar-divider d-none d-md-block">
 
 </ul>
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
