@@ -3,7 +3,7 @@
 
     <div class="card shadow">
         <div class="card-body">
-            <form method="post" action="<?= site_url('form/simpan'); ?>">
+            <form method="post" action="<?= site_url('anggota/simpan'); ?>">
 
                 <div class="form-group">
                     <label>No</label>

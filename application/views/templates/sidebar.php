@@ -24,6 +24,24 @@
         <span>Kategori</span>
     </a>
 </li>
+<li class="nav-item">
+    <a class="nav-link" href="<?= site_url('anggota') ?>">
+        <i class="fas fa-box"></i>
+        <span>Data Anggota</span>
+    </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="<?= site_url('buku') ?>">
+        <i class="fas fa-box"></i>
+        <span>Data Buku</span>
+    </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="<?= site_url('Peminjaman') ?>">
+        <i class="fas fa-box"></i>
+        <span>Data Peminjaman</span>
+    </a>
+</li>
 
 <hr class="sidebar-divider d-none d-md-block">
 

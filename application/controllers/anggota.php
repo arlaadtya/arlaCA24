@@ -1,17 +1,20 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Form extends CI_Controller {
+class anggota extends CI_Controller {
 
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Form_model');
+        $this->load->model('Anggota_model');
+        if (!$this->session->userdata('login')){
+            redirect('login');
+        }
     }
 
     public function index()
     {
-        $data['form'] = $this->Form_model->get_all();
+        $data['anggota'] = $this->Anggota_model->get_all();
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
@@ -43,19 +46,19 @@ class Form extends CI_Controller {
             'status' => 'Aktif'
         ];
         
-        $this->Form_model->insert($data);
-        redirect('index.php/form');
+        $this->Anggota_model->insert($data);
+        redirect('index.php/anggota');
     }
 
     public function hapus($id)
     {
-        $this->Form_model->delete($id);
-        redirect('index.php/form');
+        $this->Anggota_model->delete($id);
+        redirect('index.php/anggota');
     }
 
     public function edit($id)
     {
-        $data['form'] = $this->Form_model->get_by_id($id);
+        $data['anggota'] = $this->Anggota_model->get_by_id($id);
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
@@ -76,7 +79,7 @@ class Form extends CI_Controller {
             'status' => $this->input->post('status')
         ];
 
-        $this->Form_model->update($id, $data);
-        redirect('index.php/form');
+        $this->Anggota_model->update($id, $data);
+        redirect('index.php/anggota');
     }
 }
