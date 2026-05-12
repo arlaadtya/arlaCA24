@@ -27,19 +27,19 @@
 <li class="nav-item">
     <a class="nav-link" href="<?= site_url('anggota') ?>">
         <i class="fas fa-box"></i>
-        <span>Data Anggota</span>
+        <span>Anggota</span>
     </a>
 </li>
 <li class="nav-item">
     <a class="nav-link" href="<?= site_url('buku') ?>">
         <i class="fas fa-box"></i>
-        <span>Data Buku</span>
+        <span>Buku</span>
     </a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="<?= site_url('Peminjaman') ?>">
+    <a class="nav-link" href="<?= site_url('peminjaman') ?>">
         <i class="fas fa-box"></i>
-        <span>Data Peminjaman</span>
+        <span>Peminjaman</span>
     </a>
 </li>
 

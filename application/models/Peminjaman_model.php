@@ -22,7 +22,7 @@ class Peminjaman_model extends CI_Model{
             'qty'=>1
         ]);
         $this->db->set('stok','stok - 1', FALSE);
-        $this->where('id', $buku_id);
+        $this->db->where('id', $buku_id);
         $this->db->update('buku');
     }
 
@@ -37,8 +37,9 @@ class Peminjaman_model extends CI_Model{
 
     public function pengembalian($id)
     {
-        $detail = $this->get_detail($id);
-        $pinjam = $this->db->get_where('peminjaman',['id=>$id'])->row();
+    $detail = $this->get_detail($id);
+    
+    $pinjam = $this->db->get_where('peminjaman',['id=>$id'])->row();
 
         $today = date('Y-m-d');
         $terlambat = 0;

@@ -9,8 +9,8 @@ class buku extends CI_Controller {
         $this->load->model('Buku_model');
         $this->load->library('form_validation');
             if (!$this->session->userdata('login')){
-        redirect('login')
-    }
+        redirect('login');
+        }
     }
 
     // =====================
