@@ -6,8 +6,8 @@ class Peminjaman_model extends CI_Model{
     public function get_all()
     {
         $this->db->select('peminjaman.*, anggota.nama');
-        $this->db->select('peminjaman');
-        $this->db->select('anggota', 'anggota.id = peminjaman.anggota_id');
+        $this->db->from('peminjaman');
+        $this->db->join('anggota', 'anggota.id = peminjaman.anggota_id');
         return $this->db->get()->result();
     }
 
@@ -22,7 +22,7 @@ class Peminjaman_model extends CI_Model{
             'qty'=>1
         ]);
         $this->db->set('stok','stok - 1', FALSE);
-        $this->db->where('id', $buku_id);
+        $this->db->where('id_buku', $buku_id);
         $this->db->update('buku');
     }
 
@@ -30,25 +30,25 @@ class Peminjaman_model extends CI_Model{
     {
         $this->db->select('detail_peminjaman.*, buku.judul_buku');
         $this->db->from('detail_peminjaman');
-        $this->db->join('buku', 'buku.id_buku = detail_peminjaman.buku_id_buku');
+        $this->db->join('buku', 'buku.id_buku = detail_peminjaman.buku_id');
         $this->db->where('peminjaman_id', $id);
         return $this->db->get()->row();
     }
 
     public function pengembalian($id)
     {
-    $detail = $this->get_detail($id);
-    
-    $pinjam = $this->db->get_where('peminjaman',['id=>$id'])->row();
+        $detail = $this->get_detail($id);
+        $pinjam = $this->db->get_where('peminjaman',['id'=>$id])->row();
 
         $today = date('Y-m-d');
-        $terlambat = 0;
-        $denda = 0;
+        $jatuh = $pinjam->tanggal_jatuh_tempo;
 
-        if(today > $pinjam->tanggal_jatuh_tempo){
-            $terlambat=(strtotime($today)- strtotime($pinjam->tanggal_jatuh_tempo))/ 86400;
-        }
-
+//HITUNG DENDA
+        $selisih = strtotime($today) - strtotime($jatuh);
+        $terlambat = $selisih > 0 ? floor($selisih / 86400): 0;
+        $denda = $terlambat * 1000;
+    
+//SIMPAN PENGEMBALIAN
         $this->db->insert('pengembalian',[
             'peminjaman_id'=>$id,
             'tanggal_kembali'=>$today,
@@ -56,12 +56,13 @@ class Peminjaman_model extends CI_Model{
             'denda' => $denda
         ]);
 
+//UPDATE STATUS
         $this->db->where('id', $id);
         $this->db->update('peminjaman', ['status'=>'kembali']);
 
         $this->db->set('stok', 'stok + 1', FALSE);
-        $this->db->where('id', $detail->buku_id);
-        $this->db->where('id', $id);
+        $this->db->where('id_buku', $detail->buku_id);
+        // $this->db->where('id_buku', $id);
         $this->db->update('buku');
     }
 }

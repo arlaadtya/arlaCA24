@@ -3,7 +3,7 @@
 
 <div class="card shadow">
     <div class="card-body">
-<form method="post" action="<?= site_url('index.php/anggota/update/'.$anggota->id); ?>">
+<form method="post" action="<?= site_url('anggota/update/'.$anggota->id); ?>">
     <div class="form-group">
         <tabel>Nomor anggota</tabel><br>
         <input type="text" name="nomor" class="form-control" value="<?=$anggota->no_anggota; ?>" required>
@@ -43,7 +43,7 @@
     </div>
 
 <button type="submit" class="btn btn-primary">update</button>
-<a href="<?= site_url('index.php/anggota');?>" class="btn btn-secondary">kembali</a>
+<a href="<?= site_url('anggota');?>" class="btn btn-secondary">kembali</a>
 
 </form>
 </div>

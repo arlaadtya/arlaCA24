@@ -32,7 +32,7 @@
         <td><?= $b->penulis; ?></td>
 
         <!-- nanti bisa diganti nama kategori -->
-        <td><?= $b->id_kategori; ?></td>
+        <td><?= $b->id_buku; ?></td>
 
         <td><?= $b->stok; ?></td>
 

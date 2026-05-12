@@ -2,7 +2,7 @@
 
 <h2 class="h3 mb-4 text_gray-800">Data Anggota</h2>
 
-<a href="<?= site_url('index.php/anggota/tambah'); ?>" class="btn btn-primary mb-3">Tambah</a>
+<a href="<?= site_url('anggota/tambah'); ?>" class="btn btn-primary mb-3">Tambah</a>
 
 <div class="card shadow mb-4">
     <div class="card-body">
@@ -25,14 +25,14 @@
     <?php $no=1; foreach($anggota as $a): ?>
     <tr>
         <td><?= $no++; ?></td>
-        <td><?= $a->no_anggota; ?></td>
+        <td><?= $a->nomor_anggota; ?></td>
         <td><?= $a->nama; ?></td>
         <td><?= $a->telepon; ?></td>
         <td><?= $a->email; ?></td>
         <td><?= $a->status; ?></td>
         <td>
-            <a href="<?= site_url('index.php/anggota/edit/'.$a->id); ?>" class="btn btn-warning btn-sm">Edit</a>
-            <a href="<?= site_url('index.php/anggota/hapus/'.$a->id); ?>"
+            <a href="<?= site_url('anggota/edit/'.$a->id); ?>" class="btn btn-warning btn-sm">Edit</a>
+            <a href="<?= site_url('anggota/hapus/'.$a->id); ?>"
                onclick="return confirm('Yakin?')" class="btn btn-danger btn-sm">Hapus</a>
         </td>
     </tr>

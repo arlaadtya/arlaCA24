@@ -19,7 +19,7 @@ class anggota extends CI_Controller {
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
-        $this->load->view('form/index', $data);
+        $this->load->view('anggota/index', $data);
         $this->load->view('templates/footer');
     }
 
@@ -28,7 +28,7 @@ class anggota extends CI_Controller {
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
-        $this->load->view('form/tambah');
+        $this->load->view('anggota/tambah');
         $this->load->view('templates/footer');
     }
 
@@ -47,13 +47,13 @@ class anggota extends CI_Controller {
         ];
         
         $this->Anggota_model->insert($data);
-        redirect('index.php/anggota');
+        redirect('anggota');
     }
 
     public function hapus($id)
     {
         $this->Anggota_model->delete($id);
-        redirect('index.php/anggota');
+        redirect('anggota');
     }
 
     public function edit($id)
@@ -63,7 +63,7 @@ class anggota extends CI_Controller {
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
-        $this->load->view('form/edit', $data);
+        $this->load->view('anggota/edit', $data);
         $this->load->view('templates/footer');
     }
 
