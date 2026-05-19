@@ -127,4 +127,21 @@ class buku extends CI_Controller {
             redirect('buku');
         }
     }
+        public function cetak_buku()
+    {
+        $kategori = $this->input->get('kategori');
+
+        $this->db->select('buku.*, kategori.nama_kategori');
+        $this->db->from('buku');
+        $this->db->join('kategori', 'kategori.id = buku.kategori');
+
+        if ($kategori){
+            $this->db->where('buku.kategori', $kategori); 
+        }
+
+        $data['data']= $this->db->get('kategori')->result();
+        $data['kategori']= $kategori;
+
+        $this->load->view('laporan/cetak_buku', $data);
+}
 }
